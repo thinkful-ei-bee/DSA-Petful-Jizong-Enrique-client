@@ -1,0 +1,9 @@
+.cat_image img{
+  width:300px;
+}
+
+.catAdopt__profile{
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

@@ -1,0 +1,9 @@
+.dog_image img{
+  width:500px;
+}
+
+.dogAdopt__profile{
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

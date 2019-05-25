@@ -4,13 +4,17 @@ import {Route,Switch} from 'react-router-dom'
 import LandingPage from '../../Route/LandingPage/LandingPage'
 import catAdopt from '../../Route/Cat/catAdopt'
 import dogAdopt from '../../Route/Dog/dogAdopt'
+import Header from '../Header/header'
+
+
 function App() {
  
   return (
     <div className="App">
-      <header>
-        Welcome to PetFul
-      </header>
+      
+       <Header />
+
+      
     <div>
 
       <Switch>
