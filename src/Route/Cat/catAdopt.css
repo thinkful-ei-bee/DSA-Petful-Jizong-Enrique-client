@@ -7,3 +7,7 @@
   justify-content: space-between;
   flex-direction: column;
 }
+
+.adopted_animals_owners img{
+  width:300px;
+}

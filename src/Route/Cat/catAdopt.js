@@ -11,7 +11,7 @@ class catAdopt extends Component{
     people:'',
     isAdopted:false,
     seeAdopted:false,
-    isAvailable:true
+    error:null
 }
  
   componentDidMount(){
@@ -28,6 +28,21 @@ class catAdopt extends Component{
      ).then(
        data=>{
          this.setState({OpenForAdopt:data})
+       }
+     )
+     fetch(`${config.API_ENDPOINT}/people/`, {
+      method:'DELETE',
+     headers: {
+       'content-type': 'application/json',
+     },
+   })
+     .then(res =>
+       (!res.ok)
+         ? res.json().then(e => Promise.reject(e))
+         : res.json()
+     ).then(
+       data=>{
+         this.state.peopleList.push(data.name)
        }
      )
      
@@ -73,7 +88,7 @@ class catAdopt extends Component{
            }
          )
          .then(()=>fetch(`${config.API_ENDPOINT}/people/`, {
-          method:'GET',
+          method:'DELETE',
          headers: {
            'content-type': 'application/json',
          },
@@ -92,9 +107,12 @@ class catAdopt extends Component{
       )
       .catch(error => {
         console.error(error,'test error')
-        this.setState({isAvailable:false})
+        this.setState({error:error})
       })
   }
+
+  // in the future, if post method is set, this.state.error will need to be 
+  // emptied. 
     
   
   render(){
@@ -109,12 +127,13 @@ class catAdopt extends Component{
       console.log(this.state.adoptedList,'test list')
       console.log(this.state.peopleList)
       const adoptedList = this.state.adoptedList.map((animal,index)=>      
-        <div className={animal.name} key={index}>        
+        <div className='adopted_animals_owners' key={index}>        
           <img src={animal.imageURL} alt={animal.name}/>        
             {animal.name} is dopted by
             {this.state.peopleList[index]}
         </div>
       )
+      const message = this.state.error?'No animal is available':''
     return(
       <div className='catAdopt'>
           
@@ -148,6 +167,11 @@ class catAdopt extends Component{
             <button type='button' onClick={this.setSeeAdopted}>
               See Adopted
             </button>
+
+            <div className='is_adopt_available'>
+              {message}
+            </div>
+
             <div className='adopted_list'>
                 {adoptedList}
             </div>
