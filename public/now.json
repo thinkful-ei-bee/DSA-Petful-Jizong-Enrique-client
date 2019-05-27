@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": "jizong-enricque-petful-app",
+  "name": "jizong-enricque-petful-app",
+  "routes": [
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": ".*",
+        "dest": "/index.html"
+      }
+  ]
+}

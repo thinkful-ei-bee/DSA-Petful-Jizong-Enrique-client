@@ -4,10 +4,59 @@
 
 .dogAdopt__profile{
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
 }
 
-.adopted_animals_owners img{
-  width:300px;
+.adopted_animals_owners{
+  display:flex;  
+  flex-direction: column;
+  color:white;  
 }
+
+.adopted_animals_owners img{
+  width:200px;
+  height:200px;
+}
+
+.dog_profile_detail{
+  display:flex;
+  justify-content: left;
+  flex-direction: column;
+  color:white;
+
+}
+
+.dogAdopt_title{
+  font-size: 25px;
+  color:white;
+}
+
+button {
+  display:inline-block;
+  padding:0.15em 0.5em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-size:20px;
+  font-weight:300;
+  color:white;
+  background-color:#E88B00;
+  text-align:center;
+  transition: all 0.2s;
+  }
+
+  .adopted_list{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .is_adopt_available{
+    font-size:30px;
+    color:white;
+  }

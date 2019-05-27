@@ -1,5 +1,21 @@
 .header{
+  background-color:black;
+  color:white;
   display:flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: row;  
+  justify-content: space-between;
+  height:30px;
+}
+
+.header a{
+  color:white;
+  text-decoration: none;
+  margin-top:3px;
+  margin-right:10px;
+}
+
+.header_logo{
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top:3px;
 }

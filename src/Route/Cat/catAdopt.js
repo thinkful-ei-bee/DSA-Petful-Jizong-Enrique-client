@@ -128,16 +128,20 @@ class catAdopt extends Component{
       console.log(this.state.peopleList)
       const adoptedList = this.state.adoptedList.map((animal,index)=>      
         <div className='adopted_animals_owners' key={index}>        
+          <div className='pet_image'> 
           <img src={animal.imageURL} alt={animal.name}/>        
+          </div>
+          <div className='pet_caption'>
             {animal.name} is dopted by
             {this.state.peopleList[index]}
+            </div>
         </div>
       )
       const message = this.state.error?'No animal is available':''
     return(
       <div className='catAdopt'>
           
-          <div>Currently Available {dogName}</div>     
+          <div className='catAdopt_title'>Currently Available {dogName}</div>     
           
           <div className='catAdopt__profile'>
           <div className='cat_image'>
