@@ -7,6 +7,10 @@ We bring these animals in and nurse theback to health and offer one dog and caup
 adopting a pet? Join the Petful queue ansee which lucky dog or cat you will soohave as a companion!
 
 <img src='src/assets/1a.png'>
+homepage 
+<img src='src/assets/1b.png'>
+
+<img src='src/assets/1c.png'>
 
 
 ## Contributors
