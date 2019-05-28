@@ -1,27 +1,20 @@
 # Petful
 
-Contributors: Jizong Liang & Enrique Montemayor
+## Introduction
 
-### API Documentation
+Petful understands two truths. We know that there are cats and dogs in need of rescue from harmful and unfortunate circumstances. We also know that there are plenty of people outhere more than willing to provide thesanimals a caring and loving home. Wsimply want to stream-line this process.
+We bring these animals in and nurse theback to health and offer one dog and caup for adoption at a time in the ordewhich they arrived at Petful.Interested in
+adopting a pet? Join the Petful queue ansee which lucky dog or cat you will soohave as a companion!
 
-    GET /dogs
-            fetches the queue of dogs up for adoption
-
-    GET /cats
-            fetches the queue of cats up for adoption
-
-    GET /people
-            fetches the queue of people in line to adopt a pet
+<img src='src/assets/1a.png'>
 
 
-    DELETE /dogs
-            dequeues the dog once they have been adopted
+## Contributors
+ [Jizong Liang](https://github.com/JizongL) & [Enrique Montemayor](https://github.com/eemontemayor)
 
-    DELETE /cats
-            dequeues the cat once they have been adopted
+Checkout the [Petful live here](https://jizong-enricque-petful-app.2015rpro.now.sh/)
 
-    DELETE /people
-            dequeues the person once they have adopted their new pet
+Checkout the [Server Github here](https://github.com/thinkful-ei-bee/DSA-Petful-Jizong-Enrique-server)
 
 
 ### technologies
