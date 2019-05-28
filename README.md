@@ -6,12 +6,13 @@ Petful understands two truths. We know that there are cats and dogs in need of r
 We bring these animals in and nurse theback to health and offer one dog and caup for adoption at a time in the ordewhich they arrived at Petful.Interested in
 adopting a pet? Join the Petful queue ansee which lucky dog or cat you will soohave as a companion!
 
+## Demo screenshots
 <img src='src/assets/1a.png'>
 homepage 
 <img src='src/assets/1b.png'>
-
+cat adoption 1
 <img src='src/assets/1c.png'>
-
+cat adoption 2
 
 ## Contributors
  [Jizong Liang](https://github.com/JizongL) & [Enrique Montemayor](https://github.com/eemontemayor)
