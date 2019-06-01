@@ -62,13 +62,8 @@ class catAdopt extends Component{
         }
        return res.json()
       })
-      .then(data => {
-        console.log(data,'test delete data')
-        
-        
-        this.state.adoptedList.push(data)
-        
-        
+      .then(data => {                      
+        this.state.adoptedList.push(data)                
         return data
       })
       .then(()=>{
@@ -99,22 +94,20 @@ class catAdopt extends Component{
              : res.json()
          ).then(
            data=>{
+             if(data===undefined){
+               return
+             }
              this.state.peopleList.push(data.name)
            }
          ))
-      }
-
+       }
       )
       .catch(error => {
-        console.error(error,'test error')
         this.setState({error:error})
+        return 
       })
-  }
+    }
 
-  // in the future, if post method is set, this.state.error will need to be 
-  // emptied. 
-    
-  
   render(){
       const dogName=this.state.OpenForAdopt.name
       const dogImageUrl = this.state.OpenForAdopt.imageURL
@@ -122,54 +115,43 @@ class catAdopt extends Component{
       const Age = this.state.OpenForAdopt.age
       const Breed = this.state.OpenForAdopt.breed
       const Story = this.state.OpenForAdopt.story
-      //console.log(dogName,dogImageUrl,Sex,Age,Breed,Story,'test adopted')
-      
-      console.log(this.state.adoptedList,'test list')
-      console.log(this.state.peopleList)
       const adoptedList = this.state.adoptedList.map((animal,index)=>      
         <div className='adopted_animals_owners' key={index}>        
           <div className='pet_image'> 
-          <img src={animal.imageURL} alt={animal.name}/>        
+            <img src={animal.imageURL} alt={animal.name}/>        
           </div>
           <div className='pet_caption'>
             {animal.name} is dopted by
             {this.state.peopleList[index]}
-            </div>
+          </div>
         </div>
       )
       const message = this.state.error?'No animal is available':''
-    return(
-      <div className='catAdopt'>
-          
-          <div className='catAdopt_title'>Currently Available {dogName}</div>     
-          
+      return(
+        <div className='catAdopt'>          
+          <div className='catAdopt_title'>Currently Available {dogName}</div>               
           <div className='catAdopt__profile'>
           <div className='cat_image'>
               <img src={dogImageUrl}alt={dogName}/>
-            </div>
-
-
-            <div className='cat_profile_detail'>
-              <div >
-                sex: {Sex}
-              </div>
-              <div>
-                age: {Age}
-              </div>
-              <div>
-                breed: {Breed}
-              </div>
-              <div>
-                story: {Story}
-              </div>
-            </div>
-           
           </div>
+
+          <div className='cat_profile_detail'>
+            <div >
+              sex: {Sex}
+            </div>
+            <div>
+              age: {Age}
+            </div>
+            <div>
+              breed: {Breed}
+            </div>
+            <div>
+              story: {Story}
+            </div>
+          </div>           
+        </div>
             <button type='button' onClick={this.handleAdoptAnimal}>
               Let's Home {dogName}
-            </button>
-            <button type='button' onClick={this.setSeeAdopted}>
-              See Adopted
             </button>
 
             <div className='is_adopt_available'>
@@ -177,9 +159,9 @@ class catAdopt extends Component{
             </div>
 
             <div className='adopted_list'>
-                {adoptedList}
+              {adoptedList}
             </div>
-      </div>
+        </div>
     )
   }
 }

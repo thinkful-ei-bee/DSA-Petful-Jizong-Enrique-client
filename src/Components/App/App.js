@@ -7,16 +7,11 @@ import dogAdopt from '../../Route/Dog/dogAdopt'
 import Header from '../Header/header'
 
 
-function App() {
- 
+function App() { 
   return (
-    <div className="App">
-      
-       <Header />
-
-      
-    <div>
-
+    <div className="App">      
+       <Header />      
+      <div>
       <Switch>
         <Route 
           exact
@@ -35,11 +30,9 @@ function App() {
         />
       </Switch>  
     </div>
-    <div>
-      
-
-    </div>
-    </div>
+    <div>      
+  </div>
+</div>
   );
 }
 

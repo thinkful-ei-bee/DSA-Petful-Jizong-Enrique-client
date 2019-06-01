@@ -17,10 +17,10 @@ class dogAdopt extends Component{
   componentDidMount(){
     fetch(`${config.API_ENDPOINT}/dogs/`, {
       method:'GET',
-     headers: {
+      headers: {
        'content-type': 'application/json',
-     },
-   })
+      },
+    })
      .then(res =>
        (!res.ok)
          ? res.json().then(e => Promise.reject(e))
@@ -30,9 +30,9 @@ class dogAdopt extends Component{
          this.setState({OpenForAdopt:data})
        }
      )
-     fetch(`${config.API_ENDPOINT}/people/`, {
+    fetch(`${config.API_ENDPOINT}/people/`, {
       method:'DELETE',
-     headers: {
+      headers: {
        'content-type': 'application/json',
      },
    })
@@ -44,9 +44,8 @@ class dogAdopt extends Component{
        data=>{
          this.state.peopleList.push(data.name)
        }
-     )
-     
-  }
+     )     
+    }
 
   handleAdoptAnimal=()=>{
     fetch(config.API_ENDPOINT + `/dogs/`, {
@@ -61,13 +60,8 @@ class dogAdopt extends Component{
         }
        return res.json()
       })
-      .then(data => {
-        console.log(data,'test delete data')
-        
-        
-        this.state.adoptedList.push(data)
-        
-        
+      .then(data => {                  
+        this.state.adoptedList.push(data)                
         return data
       })
       .then(()=>{
@@ -77,37 +71,40 @@ class dogAdopt extends Component{
            'content-type': 'application/json',
          },
        })
-         .then(res =>
-           (!res.ok)
-             ? res.json().then(e => Promise.reject(e))
-             : res.json()
-         ).then(
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+        )
+        .then(
            data=>{
              this.setState({OpenForAdopt:data})
            }
          )
          .then(()=>fetch(`${config.API_ENDPOINT}/people/`, {
           method:'DELETE',
-         headers: {
+          headers: {
            'content-type': 'application/json',
-         },
-       })
+          },
+        })
          .then(res =>
            (!res.ok)
              ? res.json().then(e => Promise.reject(e))
              : res.json()
-         ).then(
+         )
+         .then(
            data=>{
+            if(!data){
+              return
+            }
              this.state.peopleList.push(data.name)
            }
          ))
-      }
-
+        }
       )
-      .catch(error => {
-        console.error(error,'test error')
+      .catch(error => {      
         this.setState({error:error})
-      })
+    })
   }
     
   
@@ -118,10 +115,7 @@ class dogAdopt extends Component{
     const Age = this.state.OpenForAdopt.age
     const Breed = this.state.OpenForAdopt.breed
     const Story = this.state.OpenForAdopt.story
-
-console.log(this.state.adoptedList,'test list')
-      console.log(this.state.peopleList)
-      const adoptedList = this.state.adoptedList.map((animal,index)=>      
+    const adoptedList = this.state.adoptedList.map((animal,index)=>      
         <div className='adopted_animals_owners' key={index}>
           <div className='pet_image'>        
             <img src={animal.imageURL} alt={animal.name}/>        
@@ -132,50 +126,47 @@ console.log(this.state.adoptedList,'test list')
           </div>
         </div>
       )
-      const message = this.state.error?'No animal is currently available':''
+
+    const message = this.state.error?'No animal is currently available':''
 
 
-    return(
-      <div className='dogAdopt'>
-          
-      <div className='dogAdopt_title'>Currently Available {dogName}</div>     
-      
-      <div className='dogAdopt__profile'>
-      <div className='dog_image'>
-          <img src={dogImageUrl}alt={dogName}/>
-        </div>
+  return(
+    <div className='dogAdopt'>          
+    <div className='dogAdopt_title'>Currently Available {dogName}</div>           
+    <div className='dogAdopt__profile'>
+    <div className='dog_image'>
+      <img src={dogImageUrl}alt={dogName}/>
+    </div>
 
 
-        <div className='dog_profile_detail'>
-          <div >
-            sex: {Sex}
-          </div>
-          <div>
-            age: {Age}
-          </div>
-          <div>
-            breed: {Breed}
-          </div>
-          <div>
-            story: {Story}
-          </div>
-        </div>
-       
+    <div className='dog_profile_detail'>
+      <div >
+        sex: {Sex}
       </div>
-        <button type='button' onClick={this.handleAdoptAnimal}>
-          Let's Home {dogName}
-        </button>
-        <button type='button' onClick={this.setSeeAdopted}>
-          See Adopted
-        </button>
+      <div>
+        age: {Age}
+      </div>
+      <div>
+        breed: {Breed}
+      </div>
+      <div>
+        story: {Story}
+      </div>
+    </div>       
+  </div>
+    <button type='button' onClick={this.handleAdoptAnimal}>
+      Let's Home {dogName}
+    </button>
+    {/* <button type='button' onClick={this.setSeeAdopted}>
+      See Adopted
+    </button> */}
+    <div className='is_adopt_available'>
+      {message}
+    </div>
 
-        <div className='is_adopt_available'>
-          {message}
-        </div>
-
-        <div className='adopted_list'>
-            {adoptedList}
-        </div>
+    <div className='adopted_list'>
+      {adoptedList}
+    </div>
   </div>
     )
   }
